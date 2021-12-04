@@ -1,5 +1,6 @@
 from typing import Dict, List, Optional, Tuple
 
+DATASETS = ["ES", "RU"]
 
 def _flatten(t):
     return [item for sublist in t for item in sublist]
@@ -22,6 +23,14 @@ def load_data(path: str) -> Tuple[List[List[str]], List[List[str]]]:
     return features, labels
 
 
+def write_data(path: str, features_predicted: List[List[str]], labels_predicted: List[List[str]]):
+    with open(path, "w") as f:
+        for feature, label in zip(features_predicted, labels_predicted):
+            for token, l in zip(feature, label):
+                print(token, l, file=f)
+            print(file=f)
+
+
 def remove_features_in_test_and_not_in_training(
         features_test: List[List[str]], features_training: List[List[str]]
 ) -> List[List[str]]:
@@ -34,17 +43,17 @@ def remove_features_in_test_and_not_in_training(
     ]
 
 
-def encode_features(
-        features: List[List[str]], token_map: Optional[Dict[str, int]] = None
+def encode_token(
+        tokens: List[List[str]], token_map: Optional[Dict[str, int]] = None
 ) -> Tuple[List[List[int]], Dict[str, int]]:
     if not token_map:
-        tokens = set(_flatten(features))
+        tokens = set(_flatten(tokens))
         token_map = {token: i for i, token in enumerate(tokens)}
-    features_encoded = [[token_map[x] for x in feature] for feature in features]
-    return features_encoded, token_map
+    tokens_encoded = [[token_map[x] for x in token] for token in tokens]
+    return tokens_encoded, token_map
 
 
-def decode_enc_features(features_encoded: List[List[int]], token_map: Dict[str, int]) -> List[List[str]]:
-    reverse_map = {i: feature for feature, i in token_map.items()}
-    features = [[reverse_map[x] for x in feature] for feature in features_encoded]
+def decode_enc_tokens(tokens_encoded: List[List[int]], token_map: Dict[str, int]) -> List[List[str]]:
+    reverse_map = {i: t for t, i in token_map.items()}
+    features = [[reverse_map[x] for x in token] for token in tokens_encoded]
     return features
