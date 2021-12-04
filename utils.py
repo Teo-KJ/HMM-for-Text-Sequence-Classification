@@ -2,6 +2,7 @@ from typing import Dict, List, Optional, Tuple
 
 DATASETS = ["ES", "RU"]
 
+
 def _flatten(t):
     return [item for sublist in t for item in sublist]
 
@@ -47,8 +48,9 @@ def encode_token(
         tokens: List[List[str]], token_map: Optional[Dict[str, int]] = None
 ) -> Tuple[List[List[int]], Dict[str, int]]:
     if not token_map:
-        tokens = set(_flatten(tokens))
-        token_map = {token: i for i, token in enumerate(tokens)}
+        tokens_set = set(_flatten(tokens))
+        tokens_set.add('#UNK#')
+        token_map = {token: i for i, token in enumerate(tokens_set)}
     tokens_encoded = [[token_map[x] for x in token] for token in tokens]
     return tokens_encoded, token_map
 
