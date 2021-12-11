@@ -1,28 +1,17 @@
 from typing import List
-from collections import defaultdict
+import numpy as np
 
-def get_transition_parameters(labels_encoded: List[List[int]]):
-    # TODO: PART 2 - Implement this
-    
-    del labels_encoded[-1] #delete last item from the list
-        #print(seq)
-    transmissions = defaultdict(int)
-    count_u = defaultdict(int)
+from utils import _flatten
 
-    for i in range(len(labels_encoded)-1):
-        tag_u = labels_encoded[i]
-        count_u[tag_u] += 1 # need to count #END# too
-        if tag_u == "#END#":
-            continue
 
-        #if u is not #END# we count the transmission 
-        tag_v = labels_encoded[i+1]
+def get_transition_parameters(labels_encoded: List[List[int]]) -> np.ndarray:
+    n_params = max(_flatten(labels_encoded)) + 1
+    transition_params = np.zeros((n_params + 1, n_params + 1))
+    for label in labels_encoded:
+        transition_params[0, label[0]] += 1
+        transition_params[label[-1] + 1, n_params] += 1
+        for i in range(len(label)):
+            transition_params[label[i] + 1, label[i]] += 1
 
-        if (tag_u =="#START#" and tag_v == "#END#"):
-            #check for empty blank lines at the end and dont count them
-            print('these are blank lines')
-            count_u["#START#"] -= 1 #remove additional start
-            break
-        transmissions[(tag_u,tag_v)] += 1
-
-    return transmissions, count_u
+    transition_params = (transition_params.T / transition_params.sum(axis=1)).T
+    return transition_params
