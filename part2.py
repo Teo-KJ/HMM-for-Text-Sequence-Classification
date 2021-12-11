@@ -1,6 +1,10 @@
+from tqdm import tqdm
+
 from HMM.emission import get_emission_parameters
 from HMM.transition import get_transition_parameters
-from utils import DATASETS, load_data, encode_token, write_data, remove_features_in_test_and_not_in_training
+from HMM.viterbi import viterbi_algorithm
+from utils import DATASETS, load_data, encode_token, write_data, remove_features_in_test_and_not_in_training, \
+    decode_enc_tokens
 
 if __name__ == "__main__":
     for dataset in DATASETS:
@@ -20,5 +24,9 @@ if __name__ == "__main__":
         # TODO: PART 2 - Call viterbi here to get predicted labels
         """
         labels_in_predicted = [] # update this
+        for feat in tqdm(feat_train_encoded):
+            labels_in_predicted.append(viterbi_algorithm(feat, transition_params, emission_params))
+
+        labels_in_predicted = decode_enc_tokens(tokens_encoded=labels_in_predicted, token_map=label_map)
 
         write_data(path=f"{dataset}/dev.p2.out", features_predicted=feat_in, labels_predicted=labels_in_predicted)
