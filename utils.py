@@ -13,7 +13,7 @@ def load_data(path: str) -> Tuple[List[List[str]], List[List[str]]]:
     e.g. [['hello', 'world', '.'], ['nice', 'work']], [['B-POSITIVE', 0, 0], [0, 'B-POSITIVE']]
     """
     sequences = []
-    with open(path) as f:
+    with open(path, encoding="utf8") as f:
         for sentence in f.read().split("\n\n"):
             if not sentence:
                 continue
@@ -25,7 +25,7 @@ def load_data(path: str) -> Tuple[List[List[str]], List[List[str]]]:
 
 
 def write_data(path: str, features_predicted: List[List[str]], labels_predicted: List[List[str]]):
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf8") as f:
         for feature, label in zip(features_predicted, labels_predicted):
             for token, l in zip(feature, label):
                 print(token, l, file=f)
