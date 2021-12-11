@@ -19,8 +19,9 @@ if __name__ == "__main__":
                                                                       features_training=feat_train)
         feat_in_encoded, _ = encode_token(tokens=feat_in_cleaned, token_map=feat_map)
         labels_in_encoded_predicted = [
-            np.argmax(params[:, feat_in_encoded]).tolist() for feat in tqdm(feat_in_encoded)
+            np.argmax(params[:, feat], axis=0) for feat in tqdm(feat_in_encoded)
         ]
+
         labels_in_predicted = decode_enc_tokens(tokens_encoded=labels_in_encoded_predicted, token_map=label_map)
 
         # update the path for this
