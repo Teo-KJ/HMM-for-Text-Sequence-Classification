@@ -104,6 +104,42 @@ Sentiment  recall: 0.1453
 Sentiment  F: 0.1432
 ```
 
+## Part 4
+`python evalResult.py ../ES/dev.out ../ES/dev.p4.out`
+
+```
+#Entity in gold data: 255
+#Entity in prediction: 469
+
+#Correct Entity : 102
+Entity  precision: 0.2175
+Entity  recall: 0.4000
+Entity  F: 0.2818
+
+#Correct Sentiment : 51
+Sentiment  precision: 0.1087
+Sentiment  recall: 0.2000
+Sentiment  F: 0.1409
+```
+`python evalResult.py ../RU/dev.out ../RU/dev.p4.out`
+
+```
+#Entity in gold data: 461
+#Entity in prediction: 781
+
+#Correct Entity : 192
+Entity  precision: 0.2458
+Entity  recall: 0.4165
+Entity  F: 0.3092
+
+#Correct Sentiment : 108
+Sentiment  precision: 0.1383
+Sentiment  recall: 0.2343
+Sentiment  F: 0.1739
+```
+
+The results for the `ES/test.in` and `RU/test.in` are found in `ES/test.p4.out` and `RU/test.p4.out` respectively.
+
 ## Guide
 Q: I faced this error: `UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 4193: character maps to <undefined>`. How do I resolve this issue?
 
