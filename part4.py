@@ -39,9 +39,7 @@ if __name__ == "__main__":
             # This is a modified vertibi where we take into account a transition parameter containing a subsequence of 3
             # instead of 2
             labels_in_predicted = [
-                modified_viterbi_algorithm(
-                    feat, transition_params, emission_params, k=5
-                )[-1]
+                modified_viterbi_algorithm(feat, transition_params, emission_params)[-1]
                 for feat in tqdm(feat_in_encoded)
             ]
 

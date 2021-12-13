@@ -109,33 +109,33 @@ Sentiment  F: 0.1432
 
 ```
 #Entity in gold data: 255
-#Entity in prediction: 469
+#Entity in prediction: 258
 
-#Correct Entity : 102
-Entity  precision: 0.2175
-Entity  recall: 0.4000
-Entity  F: 0.2818
+#Correct Entity : 107
+Entity  precision: 0.4147
+Entity  recall: 0.4196
+Entity  F: 0.4172
 
-#Correct Sentiment : 51
-Sentiment  precision: 0.1087
-Sentiment  recall: 0.2000
-Sentiment  F: 0.1409
+#Correct Sentiment : 86
+Sentiment  precision: 0.3333
+Sentiment  recall: 0.3373
+Sentiment  F: 0.3353
 ```
 `python evalResult.py ../RU/dev.out ../RU/dev.p4.out`
 
 ```
 #Entity in gold data: 461
-#Entity in prediction: 781
+#Entity in prediction: 437
 
-#Correct Entity : 192
-Entity  precision: 0.2458
-Entity  recall: 0.4165
-Entity  F: 0.3092
+#Correct Entity : 167
+Entity  precision: 0.3822
+Entity  recall: 0.3623
+Entity  F: 0.3719
 
-#Correct Sentiment : 108
-Sentiment  precision: 0.1383
-Sentiment  recall: 0.2343
-Sentiment  F: 0.1739
+#Correct Sentiment : 117
+Sentiment  precision: 0.2677
+Sentiment  recall: 0.2538
+Sentiment  F: 0.2606
 ```
 
 The results for the `ES/test.in` and `RU/test.in` are found in `ES/test.p4.out` and `RU/test.p4.out` respectively.
