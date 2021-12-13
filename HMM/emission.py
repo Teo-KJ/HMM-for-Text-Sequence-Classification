@@ -13,8 +13,8 @@ def get_emission_parameters(
     emission = np.zeros((num_labels, num_features))
 
     for i, j in zip(labels_encoded, features_encoded):
-        for s, o in zip(i, j):
-            emission[s, o] += 1
+        for state, observation in zip(i, j):
+            emission[state, observation] += 1
 
     emission_params = emission / emission.sum(axis=0)
     return emission_params

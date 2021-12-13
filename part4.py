@@ -15,12 +15,15 @@ from utils import (
 if __name__ == "__main__":
     for dataset in DATASETS:
         for version in ["dev", "test"]:
+
+            # Data reading and processing
             feat_train, label_train = load_data(path=f"{dataset}/train")
             feat_in, _ = load_data(path=f"{dataset}/{version}.in")
 
             feat_train_encoded, feat_map = encode_token(tokens=feat_train)
             label_train_encoded, label_map = encode_token(tokens=label_train)
 
+            # Model training
             emission_params = get_emission_parameters(
                 features_encoded=feat_train_encoded, labels_encoded=label_train_encoded
             )

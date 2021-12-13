@@ -14,12 +14,15 @@ from utils import (
 
 if __name__ == "__main__":
     for dataset in DATASETS:
+
+        # Data reading and processing
         feat_train, label_train = load_data(path=f"{dataset}/train")
         feat_in, _ = load_data(path=f"{dataset}/dev.in")
 
         feat_train_encoded, feat_map = encode_token(tokens=feat_train)
         label_train_encoded, label_map = encode_token(tokens=label_train)
 
+        # Model training
         emission_params = get_emission_parameters(
             features_encoded=feat_train_encoded, labels_encoded=label_train_encoded
         )
@@ -31,8 +34,9 @@ if __name__ == "__main__":
             features_test=feat_in, features_training=feat_train
         )
         feat_in_encoded, _ = encode_token(tokens=feat_in_cleaned, token_map=feat_map)
+        
         """
-        # TODO: PART 2 - Call viterbi here to get predicted labels
+        Make predictions on the 5th best output sequence
         """
         labels_in_predicted = [
             viterbi_algorithm(feat, transition_params, emission_params, k=5)[-1]
