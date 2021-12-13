@@ -2,6 +2,18 @@
 
 ## Results
 
+Precision Score
+
+<img height="50" alt="image" src=https://user-images.githubusercontent.com/48685014/145745229-4d67a1e9-8fe6-466d-8b41-d88dbf80b9bd.png>
+
+Recall Score
+
+<img height="50" alt="image" src=https://user-images.githubusercontent.com/48685014/145745409-a0c56d14-7331-4baf-9997-882be230a00d.png>
+
+F Score
+
+<img height="50" alt="image" src=https://user-images.githubusercontent.com/48685014/145745475-d2c39aa7-7b65-4494-9912-ec5b19989342.png>
+
 ### Part 1
 `python evalResult.py ../ES/dev.out ../ES/dev.p1.out`
 
