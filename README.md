@@ -1,4 +1,7 @@
 # 50.007-machine-learning
+Code repository for SUTD ISTD 50.007 Machine Learning Final Project.
+
+By Josiah, Brennan and Kai Jie
 
 ## Results
 
