@@ -1,7 +1,10 @@
-# 50.007-machine-learning
+#  HMM-for-Text-Sequence-Classification
 Code repository for SUTD ISTD 50.007 Machine Learning Final Project.
 
 By Josiah, Brennan and Kai Jie
+
+## About the Project
+This project is on developing a Hidden Markov Model (HMM) from scratch to classify text sequences of foreign languages.
 
 ## Results
 
@@ -156,6 +159,10 @@ Sentiment  F: 0.2606
 The results for the `ES/test.in` and `RU/test.in` are found in `ES/test.p4.out` and `RU/test.p4.out` respectively.
 
 ## Guide
-Q: I faced this error: `UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 4193: character maps to <undefined>`. How do I resolve this issue?
+#### Q: I faced this error: `UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 4193: character maps to <undefined>`. How do I resolve this issue?
 
 A: You will need to add the parameter `encoding="utf8"` in the `open()` function.
+
+#### Q: How do I mirror a private repository?
+
+A: You can use Git bash to perform commands to mirror the repostory as seen in this [guide](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository).
